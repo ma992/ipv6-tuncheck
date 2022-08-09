@@ -1,0 +1,6 @@
+Workaround for broken ISP ONT/gateway
+
+This script is designed for use with a Wireguard IPv6 tunnel managed through wg-quick and advertised to the network via radvd.
+It restarts a Wireguard tunnel if pings to two different servers through the tunnel fail or take more than (by default) 100 ms.
+If there's still no connectivity after a restart, the radvd service is stopped, so that the broken IPv6 connectivity is not advertised to clients. If radvd is stopped, an IPv4 server is also pinged in a similar way to log ISP interruptions.
+The script logs events to timestamped files.
